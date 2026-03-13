@@ -15,7 +15,7 @@ Fact-check results can be altered, deleted, or disputed — there's no permanent
 
 Our Solution
 FactShield combines three layers of technology into one consumer-friendly platform:
-LayerWhat it does🤖 AI (NLP)Reads content, isolates individual claims, cross-references trusted sources, and returns a plain-language verdict⛓️ Blockchain (Polygon)Permanently seals every verification result on-chain — tamper-proof and publicly verifiable🌍 Real-time IntelligenceTracks misinformation trends globally via an interactive heatmap updated in real time
+LayerWhat it does AI (NLP)Reads content, isolates individual claims, cross-references trusted sources, and returns a plain-language verdict Blockchain (Polygon)Permanently seals every verification result on-chain — tamper-proof and publicly verifiable Real-time Intelligence Tracks misinformation trends globally via an interactive heatmap updated in real time
 
 Key Features
 1. Universal Input
