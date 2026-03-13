@@ -2,9 +2,8 @@
 
 CityU Fusion X hackathon Project  
 
-  
-What is FactShield?
-FactShield is an AI-powered misinformation detection platform built for everyday people — not just journalists or researchers.
+What is FactShield?\
+FactShield is an AI-powered misinformation detection platform built for everyday people — not just journalists or researchers.\
 In a world where fake news spreads 6× faster than real news, most fact-checking tools are too complex, too slow, or built for professionals. FactShield changes that.
 Paste any article, URL, or video link. Get a verdict in seconds. Verified forever on the blockchain.
 
