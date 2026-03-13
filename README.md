@@ -11,20 +11,20 @@ The Problem\
 Over 1.2 million pieces of misinformation are shared online every day\
 Existing tools require technical knowledge or journalistic training to use effectively\
 No single tool handles text, URLs, and video in one place\
-Fact-check results can be altered, deleted, or disputed — there's no permanent record of truth\
+Fact-check results can be altered, deleted, or disputed — there's no permanent record of truth
 
 
 Our Solution\
 FactShield combines three layers of technology into one consumer-friendly platform:\
 LayerWhat it does AI (NLP)Reads content, isolates individual claims, cross-references trusted sources, and returns a plain-language verdict Blockchain (Polygon)Permanently seals every verification result on-chain — tamper-proof and publicly verifiable Real-time Intelligence Tracks misinformation trends globally via an interactive heatmap updated in real time
 
-Key Features\
+Key Features
 1. Universal Input
 Submit content in any format:\
 
 Paste text — copy-paste any article or paragraph\
 Article URL — paste a link and we fetch + analyze the full content\
-Video link — paste a YouTube or social media link; we transcribe the audio via Whisper API and fact-check the spoken claims\
+Video link — paste a YouTube or social media link; we transcribe the audio via Whisper API and fact-check the spoken claims
 
 2. AI Verdict\
 Every submission gets:\
@@ -32,10 +32,10 @@ Every submission gets:\
 A clear verdict — ✅ REAL, ❌ FAKE, or ⚠️ SUSPICIOUS\
 A confidence score (e.g. 94.2%)\
 A plain-language summary — no jargon, no ambiguity\
-Links to trusted sources (CNN, BBC, NYT, Al Jazeera, WHO) that support or debunk the claim\
+Links to trusted sources (CNN, BBC, NYT, Al Jazeera, WHO) that support or debunk the claim
 
 3. Claim Breakdown\
-Long articles are broken into individual claims, each verdicted separately:\
+Long articles are broken into individual claims, each verdicted separately:
 
 TRUE — supported by multiple credible sources\
 FALSE — directly contradicted by credible sources\
@@ -63,20 +63,19 @@ Generate a shareable verdict card with:\
 The verdict badge, confidence score, and summary
 Blockchain verification tag
 QR code linking to the full report
-One-click share to X (Twitter), WhatsApp, or download as image/
+One-click share to X (Twitter), WhatsApp, or download as image\
 
 Pages & User Flow/
-Splash Page/
-    └──> Home (Universal Input)/
-              └──> Analyzing (Loading State)/
-                        └──> Results Page (Text/URL)/
-                        └──> Results Page (Video) — includes Deepfake Score/
-                                  └──> Share Modal/
+Splash Page\
+    └──> Home (Universal Input)\
+              └──> Analyzing (Loading State)\
+                        └──> Results Page (Text/URL)\
+                        └──> Results Page (Video) — includes Deepfake Score\
+                                  └──> Share Modal\
 Navbar
-    ├──> Heatmap/
-    ├──> Journal/
-    └──> About/
+    ├──> Heatmap\
+    ├──> Journal\
+    └──> About\
 
    
-
-⚠️ Full code coming soon — this repo will be updated with the complete implementation after the primary hackathon submission deadline./
+⚠️ Full code coming soon — this repo will be updated with the complete implementation after the primary hackathon submission deadline.
