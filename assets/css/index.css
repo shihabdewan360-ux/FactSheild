@@ -1,0 +1,150 @@
+/* --- TOP LANDING HERO SECTION --- */
+.landing-hero {
+    position: relative;
+    min-height: calc(100vh - 80px); /* Takes up the full viewport height minus navbar */
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+    overflow: hidden;
+}
+
+/* The distinct cyan glow on the right side */
+.landing-glow {
+    position: absolute;
+    top: 50%;
+    right: -10%;
+    transform: translateY(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(0, 180, 216, 0.2) 0%, rgba(8, 11, 18, 0) 65%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.landing-content {
+    max-width: 800px;
+    z-index: 1;
+    /* Smooth fade-up animation */
+    animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.landing-title {
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -1.5px;
+}
+
+.landing-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+    font-weight: 400;
+}
+
+.landing-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Specific styling for the outlined button */
+.btn-outline {
+    background: transparent;
+    color: #fff;
+    padding: 12px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+    display: inline-block;
+}
+
+.btn-outline:hover {
+    border-color: #fff;
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+/* Keyframe animation for the smooth load-in */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsiveness for Landing Hero */
+@media (max-width: 900px) {
+    .landing-title { font-size: 3.5rem; }
+    .landing-glow { width: 500px; height: 500px; right: -20%; }
+}
+@media (max-width: 600px) {
+    .landing-hero { align-items: flex-start; padding-top: 15vh; }
+    .landing-title { font-size: 2.8rem; }
+    .landing-actions { flex-direction: column; align-items: stretch; gap: 16px; }
+    .btn-outline, .btn-primary { text-align: center; }
+}
+
+
+/* --- SPLINE 3D MODEL INTEGRATION --- */
+/* --- SPLINE 3D MODEL INTEGRATION --- */
+.spline-container {
+    position: absolute;
+    right: -5%; /* Pushes it slightly right so it doesn't crowd the text */
+    top: 40%; /* Changed from 50% to pull it higher up */
+    transform: translateY(-40%); /* Adjusted to match the new top value */
+    width: 600px; 
+    height: 600px; /* Reduced from 800px so the canvas doesn't stretch down to the footer */
+    z-index: 0;
+    opacity: 0;
+    animation: fadeUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+    pointer-events: auto; 
+}
+
+/* Ensure the text container doesn't invisible-block the 3D model */
+.landing-content {
+    position: relative;
+    z-index: 2;
+    pointer-events: none; /* Let clicks pass through empty spaces */
+}
+
+/* Re-enable clicks on the actual text and buttons */
+.landing-content > * {
+    pointer-events: auto; 
+}
+
+/* Hide Spline watermark if desired (Optional, but makes it cleaner) */
+spline-viewer::part(logo) {
+    display: none !important;
+}
+
+/* Mobile Responsiveness for 3D Robot */
+@media (max-width: 1024px) {
+    .spline-container {
+        width: 450px;
+        height: 600px;
+        right: -5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .spline-container {
+        /* On phones, drop it behind the text as an atmospheric background */
+        width: 100vw;
+        height: 500px;
+        right: 0;
+        top: 60%;
+        opacity: 0.2 !important; /* Dim it heavily so text remains readable */
+        z-index: -1;
+        pointer-events: none; /* Disable interaction on mobile to allow scrolling */
+    }
+}

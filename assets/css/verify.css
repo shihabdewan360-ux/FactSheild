@@ -1,0 +1,320 @@
+/* --- VERIFY PAGE STYLES --- */
+
+/* Animate the main tool and how-it-works sections on load */
+#analyze, .how-it-works-section {
+    display: block;
+    animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* --- Hero Section & Glow --- */
+.hero-section {
+    position: relative;
+    text-align: center;
+    padding: 80px 20px 60px;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 180, 216, 0.15) 0%, rgba(8, 11, 18, 0) 70%);
+    z-index: -1;
+}
+
+.badge-outline span {
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.hero-title {
+    font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+
+.text-cyan {
+    color: var(--accent-cyan);
+}
+
+.hero-subtitle {
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+/* --- Input Form --- */
+.analysis-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.input-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    padding: 10px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tab-btn.active, .tab-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--accent-cyan);
+    background-color: rgba(0, 180, 216, 0.05);
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 8px;
+    background-color: #e2e8f0;
+    border: none;
+    font-size: 1rem;
+    color: #0f172a;
+    margin-bottom: 24px;
+    outline: none;
+}
+
+.btn-primary {
+    background-color: var(--accent-cyan);
+    color: #fff;
+    padding: 12px 32px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-cyan-hover);
+    transform: translateY(-2px);
+}
+
+/* --- How It Works Cards --- */
+.how-it-works-section {
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: var(--bg-main);
+}
+
+.subtitle-small {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.title-large {
+    font-size: 2.2rem;
+    margin-bottom: 60px;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+}
+
+.step-card {
+    background-color: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0, 180, 216, 0.3);
+}
+
+.step-icon-wrapper img {
+    height: 48px;
+    margin-bottom: 20px;
+}
+
+.step-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    line-height: 1.4;
+}
+
+.step-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* --- Stats Grid --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: var(--bg-card);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    padding: 30px 20px;
+}
+
+.border-left-right {
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.stat-number.cyan { color: var(--accent-cyan); }
+.stat-number.red { color: var(--accent-red); }
+.stat-number.green { color: var(--accent-green); }
+
+.stat-label {
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .steps-grid, .stats-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2.5rem !important; }
+}
+
+/* --- PROCESSING MODAL STYLES --- */
+.modal-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(8, 11, 18, 0.9);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--bg-card);
+    border: 1px solid rgba(0, 180, 216, 0.3);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    box-shadow: 0 0 40px rgba(0, 180, 216, 0.15);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.pulse-dot {
+    width: 12px; height: 12px;
+    background-color: var(--accent-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-cyan);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 180, 216, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 180, 216, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 180, 216, 0); }
+}
+
+.modal-header h3 { font-size: 1.2rem; margin-right: auto; }
+.status-badge {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; color: var(--text-secondary);
+}
+
+.modal-url-display {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px 16px; border-radius: 8px;
+    display: flex; align-items: center; gap: 12px; margin-bottom: 30px;
+}
+
+#display-url-text {
+    flex-grow: 1; font-family: monospace; font-size: 0.85rem;
+    color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+.url-badge { background: rgba(255, 255, 255, 0.1); padding: 2px 8px; border-radius: 4px; font-size: 0.7rem; }
+
+/* Progress Steps */
+.progress-steps { display: flex; flex-direction: column; gap: 24px; position: relative; margin-bottom: 40px; }
+.progress-steps::before {
+    content: ''; position: absolute; left: 15px; top: 15px; bottom: 15px;
+    width: 2px; background: rgba(255, 255, 255, 0.1); z-index: 0;
+}
+
+.step-item { display: flex; align-items: center; gap: 16px; z-index: 1; opacity: 0.5; transition: 0.3s; }
+.step-item.active, .step-item.completed { opacity: 1; }
+
+.step-icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--bg-card); border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex; align-items: center; justify-content: center;
+}
+
+.step-item.completed .step-icon { border-color: var(--accent-green); }
+.step-item.completed .step-icon::after {
+    content: '✓'; color: var(--accent-green); font-weight: bold; font-size: 14px;
+}
+
+.step-item.active .step-icon { border-color: var(--accent-cyan); animation: rotate 2s linear infinite; border-top-color: transparent;}
+@keyframes rotate { 100% { transform: rotate(360deg); } }
+
+.step-text { flex-grow: 1; font-size: 0.95rem; }
+.step-status { font-size: 0.8rem; color: var(--text-secondary); border: 1px solid rgba(255, 255, 255, 0.1); padding: 4px 10px; border-radius: 12px; }
+
+.step-item.completed .step-status { color: var(--accent-green); border-color: rgba(34, 197, 94, 0.3); content: 'Done';}
+.step-item.active .step-status { color: var(--accent-cyan); border-color: rgba(0, 180, 216, 0.3); }
+
+/* Progress Footer */
+.progress-footer p { font-size: 0.8rem; color: var(--text-secondary); text-align: center; margin-bottom: 12px; }
+.progress-bar-container { width: 100%; height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 3px; overflow: hidden; }
+.progress-bar-fill { height: 100%; width: 0%; background: var(--accent-cyan); transition: width 0.3s ease; }
+

@@ -1,0 +1,94 @@
+/* --- ABOUT PAGE STYLES --- */
+.about-page { 
+    padding: 40px 0 100px; 
+}
+
+.about-page .container { 
+    max-width: 900px; /* Narrower container for better reading width */
+} 
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 60px;
+    /* Reuse our smooth entrance animation */
+    animation: fadeUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.mission-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.mission-label .line {
+    height: 1px;
+    width: 60px;
+    background-color: var(--accent-cyan);
+    opacity: 0.5;
+}
+
+.mission-label .text {
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about-title {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 32px;
+    letter-spacing: -1px;
+}
+
+.about-description {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 48px;
+    max-width: 800px;
+    font-weight: 300;
+}
+
+.about-features {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.feature-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border: 1px solid rgba(0, 180, 216, 0.3);
+    border-radius: 30px;
+    color: var(--accent-cyan);
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: rgba(0, 180, 216, 0.05);
+    transition: 0.2s;
+}
+
+.feature-pill:hover {
+    background: rgba(0, 180, 216, 0.15);
+    border-color: var(--accent-cyan);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Mobile Responsiveness for About Page */
+@media (max-width: 768px) {
+    .about-title { font-size: 2.8rem; }
+    .about-description { font-size: 1rem; margin-bottom: 32px; }
+    .about-features { gap: 12px; }
+    .feature-pill { padding: 8px 16px; font-size: 0.8rem; }
+    .about-content { margin-top: 30px; }
+    .mission-label .line { width: 40px; }
+}

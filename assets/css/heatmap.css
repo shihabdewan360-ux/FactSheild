@@ -1,0 +1,137 @@
+
+/* --- HEATMAP PAGE STYLES --- */
+.heatmap-page { padding: 40px 0 80px; }
+
+/* Pulsing Red Dots */
+.live-dot-large, .live-dot-small {
+    display: inline-block;
+    border-radius: 50%;
+    background-color: var(--accent-red);
+    box-shadow: 0 0 10px var(--accent-red);
+    animation: pulseRed 2s infinite;
+}
+.live-dot-large { width: 16px; height: 16px; margin-right: 8px; vertical-align: baseline; }
+.live-dot-small { width: 8px; height: 8px; margin-right: 8px; vertical-align: middle; }
+
+@keyframes pulseRed {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Filters */
+.heatmap-filters {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 24px;
+    flex-wrap: wrap; gap: 20px;
+}
+.filter-group { display: flex; align-items: center; gap: 16px; flex-wrap: wrap;}
+.filter-label { color: var(--text-secondary); font-size: 0.9rem; }
+.filter-pills { display: flex; gap: 12px; flex-wrap: wrap; }
+.filter-pill {
+    background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--text-primary);
+    padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: 0.2s;
+}
+.filter-pill:hover, .filter-pill.active { border-color: var(--accent-cyan); background: var(--accent-cyan); color: #fff; }
+
+.dropdown-group { gap: 24px; border-left: 1px solid rgba(255,255,255,0.1); padding-left: 24px; }
+.filter-dropdown { display: flex; align-items: center; gap: 8px; }
+.filter-dropdown select {
+    background: transparent; border: none; color: var(--text-primary);
+    font-size: 0.9rem; outline: none; cursor: pointer;
+}
+.filter-dropdown select option { background: var(--bg-card); color: #fff; }
+
+/* Main Heatmap Layout */
+.heatmap-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-bottom: 24px; }
+
+/* The Map */
+/* The Map */
+.map-section { position: relative; padding: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #080b12;}
+.map-container { position: relative; width: 100%; padding: 40px; }
+
+/* FIX A: Make the map highly visible against the dark background */
+.world-map-img { 
+    filter: invert(1) brightness(2.5) contrast(1.2); 
+    opacity: 1; 
+    width: 100%; 
+}
+
+/* FIX B/C: Interactive, color-scaled dots */
+.hotspot { 
+    position: absolute; width: 16px; height: 16px; border-radius: 50%; 
+    transform: translate(-50%, -50%); cursor: pointer; transition: transform 0.2s;
+    z-index: 10;
+}
+.hotspot:hover { transform: translate(-50%, -50%) scale(1.5); }
+
+/* Separate pulse layer so the dot itself stays solid */
+.hotspot-pulse {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%; animation: pulseRing 2s infinite; pointer-events: none;
+}
+
+/* 1. Low volume: Lite yellow, semi-transparent */
+.hotspot.moderate { background: rgba(234, 179, 8, 0.5); box-shadow: 0 0 10px rgba(234, 179, 8, 0.3); } 
+.hotspot.moderate .hotspot-pulse { animation-name: pulseRingModerate; }
+
+/* 2. Medium volume: Orange, mostly solid */
+.hotspot.high { background: rgba(249, 115, 22, 0.8); box-shadow: 0 0 12px rgba(249, 115, 22, 0.6); } 
+.hotspot.high .hotspot-pulse { animation-name: pulseRingHigh; }
+
+/* 3. High volume: Bright Red, solid */
+.hotspot.critical { background: rgba(239, 68, 68, 1); box-shadow: 0 0 15px rgba(239, 68, 68, 0.9); } 
+.hotspot.critical .hotspot-pulse { animation-name: pulseRingCritical; }
+
+@keyframes pulseRingModerate { 0% { box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.5); } 70% { box-shadow: 0 0 0 10px rgba(234, 179, 8, 0); } 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); } }
+@keyframes pulseRingHigh { 0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.6); } 70% { box-shadow: 0 0 0 12px rgba(249, 115, 22, 0); } 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); } }
+@keyframes pulseRingCritical { 0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); } }
+
+.map-legend {
+    position: absolute; bottom: 30px; left: 30px;
+    background: var(--bg-card); border: 1px solid rgba(0,180,216,0.3);
+    padding: 16px 24px; border-radius: 12px;
+}
+.map-legend h4 { font-size: 0.75rem; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 12px; }
+.map-legend ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.map-legend li { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+.legend-dot.critical { background: var(--accent-red); }
+.legend-dot.high { background: #f97316; }
+.legend-dot.moderate { background: #eab308; }
+
+/* Sidebar List */
+.region-focus { color: var(--text-secondary); font-size: 0.9rem; font-weight: 400; }
+.misinfo-list { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
+.misinfo-card { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); padding: 16px; border-radius: 8px; }
+.misinfo-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+.misinfo-title { font-size: 0.9rem; font-weight: 600; line-height: 1.4; }
+
+.misinfo-footer { display: flex; justify-content: space-between; align-items: flex-end; }
+.misinfo-topic { font-size: 0.75rem; color: var(--text-secondary); }
+.misinfo-stats { text-align: right; display: flex; flex-direction: column; gap: 4px; }
+.shares { font-size: 0.7rem; color: var(--text-secondary); }
+.view-source-link { color: var(--accent-cyan); font-size: 0.8rem; text-decoration: none; }
+.view-source-link:hover { color: #fff; }
+
+/* Bottom Stats Bar */
+.heatmap-stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); padding: 0; }
+.h-stat-item { padding: 32px 24px; text-align: center; }
+.h-stat-item.border-right { border-right: 1px solid rgba(255,255,255,0.05); }
+.h-stat-label { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 8px; }
+.h-stat-value { font-size: 1.8rem; font-weight: 700; margin-bottom: 4px; }
+.text-yellow { color: #eab308; } /* Adds the yellow color for 'Politics' */
+.h-stat-sub { color: var(--text-secondary); font-size: 0.75rem; }
+
+/* Responsive Heatmap */
+@media (max-width: 1024px) {
+    .heatmap-grid { grid-template-columns: 1fr; }
+    .heatmap-stats-bar { grid-template-columns: 1fr 1fr; }
+    .h-stat-item.border-right { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .dropdown-group { border-left: none; padding-left: 0; width: 100%; justify-content: flex-start; }
+}
+@media (max-width: 600px) {
+    .heatmap-stats-bar { grid-template-columns: 1fr; }
+    .map-container { padding: 10px; }
+    .map-legend { position: relative; bottom: 0; left: 0; margin-top: 20px; }
+}
